@@ -1,0 +1,22 @@
+// Rugile Stundziaite 20268495
+// EX 2-6
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("%u\n", setbits(255, 4, 3, 5));
+
+    return 0;
+}
+
+
+unsigned setbits(unsigned x, int p, int n, unsigned y)
+{
+    unsigned mask;
+
+    mask = ~(~0 << n);
+
+    return (x & ~(mask << (p + 1 - n)))
+        | ((y & mask) << (p + 1 - n));
+}
