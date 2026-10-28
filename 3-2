@@ -1,0 +1,86 @@
+//Rugile Stundziaite 20268495
+
+// EX 3-2
+
+
+
+#include <stdio.h>
+
+void escape(char s[], const char t[]);
+void unescape(char s[], const char t[]);
+
+
+int main()
+{
+	char t[] = "Hello\tworld\nThis is a test.";
+	char escaped[100];
+	char unescaped[100];
+
+
+	escape(escaped, t);
+	printf(" Escaped string: %s\n", escaped);
+
+	unescape(unescaped, escaped);
+	printf("Unescaped string: %s\n", unescaped);
+
+}
+
+
+void escape(char s[], const char t[])
+{
+	int i = 0, j = 0;
+
+	while (t[i] != '\0')
+	{
+		switch (t[i])
+		{
+		case '\n':
+			s[j++] = '\\';
+			s[j++] = 'n';
+			break;
+		case '\t':
+			s[j++] = '\\';
+			s[j++] = 't';
+			break;
+		default:
+			s[j++] = t[i];
+			break;
+		}
+		i++;
+	}
+	s[j] = '\0';
+}
+
+void unescape(char s[], const char t[])
+{
+	int i = 0, j = 0;
+
+	while (t[i] != '\0')
+	{
+		if (t[i] == '\\' && t[i + 1] != '\0')
+		{
+			switch (t[i + 1])
+			{
+			case 'n':
+				s[j++] = '\n';
+				i++;
+				break;
+			case 't':
+				s[j++] = '\t';
+				i++;
+				break;
+			default:
+				s[j++] = t[i];
+				break;
+			}
+		}
+		else
+		{
+			s[j++] = t[i];
+		}
+
+		i++;
+	}
+	s[j] = '\0';
+}
+
