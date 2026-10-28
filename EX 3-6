@@ -37,7 +37,6 @@ void itoa(int n, char s[], int width)
     if (sign < 0)
         s[i++] = '-';
 
-    /* add spaces until desired width */
     while (i < width)
         s[i++] = ' ';
 
