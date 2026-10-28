@@ -1,0 +1,22 @@
+// Rugile Stundziaite 20268495
+
+
+// EX 2-7
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("%u\n", invert(255, 4, 3));
+    return 0;
+}
+
+
+unsigned invert(unsigned x, int p, int n)
+{
+    unsigned mask;
+
+    mask = ~(~0 << n);
+
+    return x ^ (mask << (p + 1 - n));
+}
